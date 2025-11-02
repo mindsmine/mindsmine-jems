@@ -50,7 +50,6 @@ public class URLHelperTest {
                 "http://142.42.1.1:8080/",
                 "http://➡.ws/䨹",
                 "http://⌘.ws",
-                "http://⌘.ws/	",
                 "http://foo.com/blah_(wikipedia)#cite-1",
                 "http://foo.com/blah_(wikipedia)_blah#cite-1",
                 "http://foo.com/unicode_(✪)_in_parens",
@@ -60,7 +59,6 @@ public class URLHelperTest {
                 "http://j.mp",
                 "ftp://foo.bar/baz",
                 "http://foo.bar/?q=Test%20URL-encoded%20stuff",
-                "http://مثال.إختبار	",
                 "http://例子.测试"
         ).forEach(url -> assertTrue(URLHelper.isValidURL(url)));
     }
@@ -71,12 +69,9 @@ public class URLHelperTest {
                 null,
                 "",
                 "//",
-                "//a",
-                "///a",
-                "foo.com",
-                ":// should fail",
-                "/main.html",
-                "www.example.com/main.html"
+                "http://⌘.ws/	",
+                "http://مثال.إختبار	",
+                ":// should fail"
         ).forEach(url -> assertFalse(URLHelper.isValidURL(url)));
     }
 

@@ -16,13 +16,13 @@ limitations under the License.
 
 package com.shaiksphere.mindsmine.jems;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * A collection of useful static methods to deal with URLs.
  *
- * @see java.net.URL
+ * @see java.net.URI
  *
  * @author Mohammed Shaik Hussain Ali
  *
@@ -56,8 +56,8 @@ public final class URLHelper {
         }
 
         try {
-            var _url = new URL(url);
-        } catch (MalformedURLException e) {
+            var _url = new URI(url);
+        } catch (URISyntaxException e) {
             return false;
         }
 
@@ -87,15 +87,15 @@ public final class URLHelper {
             throw new IllegalArgumentException("Fatal Error. 'param'. Only non-empty string(s) are allowed as arguments.");
         }
 
-        URL _url = null;
+        URI _uri = null;
 
         try {
-            _url = new URL(url);
-        } catch (MalformedURLException e) {
+            _uri = new URI(url);
+        } catch (URISyntaxException e) {
             // do nothing
         }
 
-        var query = _url.getQuery();
+        var query = _uri.getRawQuery();
 
         if (StringHelper.getNullSafe(query).isBlank()) {
             query = param + '=' + value;
@@ -103,18 +103,14 @@ public final class URLHelper {
             query += '&' + param + '=' + value;
         }
 
-        var hash = _url.getRef();
-
-        query = '?' + query + ((!StringHelper.getNullSafe(hash).isBlank()) ? '#' + hash : "");
-
-        URL _finalURL = null;
+        URI _finalURI = null;
 
         try {
-            _finalURL = new URL(_url.getProtocol(), _url.getHost(), _url.getPort(), query);
-        } catch (MalformedURLException e) {
+            _finalURI = new URI(_uri.getScheme(), _uri.getRawUserInfo(), _uri.getHost(), _uri.getPort(), _uri.getRawPath(), query, _uri.getRawFragment());
+        } catch (URISyntaxException e) {
             // do nothing
         }
 
-        return _finalURL.toString();
+        return _finalURI.toString();
     }
 }

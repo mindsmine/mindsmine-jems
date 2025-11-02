@@ -12,6 +12,9 @@ utility classes such as String manipulation, Object wrappers, amongst others.
 
 ### Releases ###
 
+**4.9.0**
+* Java 25 compliant
+
 **4.8.1**
 * Java 20 compliant
 * Using Github actions in lieu of Circle CI and Travis CI
