@@ -14,6 +14,7 @@ utility classes such as String manipulation, Object wrappers, amongst others.
 
 **4.9.0**
 * Java 25 compliant
+* Replaced use of `java.net.URL` with `java.net.URI` instead.
 
 **4.8.1**
 * Java 20 compliant
