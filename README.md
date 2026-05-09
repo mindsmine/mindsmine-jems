@@ -12,6 +12,9 @@ utility classes such as String manipulation, Object wrappers, amongst others.
 
 ### Releases ###
 
+**4.9.1**
+* Java 26 compliant
+
 **4.9.0**
 * Java 25 compliant
 * Replaced use of `java.net.URL` with `java.net.URI` instead.
