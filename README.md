@@ -44,7 +44,7 @@ $ mvn clean package
  
 ---
 
-### Releases ###
+## Releases ##
 
 **4.9.1**
 * Java 26 compliant
